@@ -1,0 +1,28 @@
+{
+  "name": "lab2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dompurify": "^3.0.6",
+    "dotenv": "^16.3.1",
+    "escape-html": "^1.0.3",
+    "express": "~4.16.1",
+    "express-validator": "^7.0.1",
+    "express-xss-sanitizer": "^1.1.6",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "jsdom": "^22.1.0",
+    "morgan": "~1.9.1",
+    "strip-js": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.31"
+  }
+}

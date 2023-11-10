@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1.display-5.mb-3 XSS Example
+    small.text-muted.m-3• Local or DOM-based XSS
+
+  div.alert.alert-secondary Ispunjavanjem forme ispod, biti ćete navigirani na stranicu koja će prikazati Vašu poruku. Ako ste označili checkbox, moći ćete izvesti XSS napad unutar DOM-a stranice
+    div Kao primjer napada, možete unijeti sljedeći kod:
+    code &ltscript&gt alert('XSS') &lt/script&gt
+    div Ukoliko niste označili checkbox, Vaša poruka će biti prikazana kao tekst, a ne kao HTML, te nećete moći izvesti XSS napad.
+
+  div.container-sm.mb-5
+    form(method="post", action="/xss")
+      label.form-label(for="xssMessage") Enter your name:
+      div.input-group.mb-3
+        input.form-control(type="text", name="xssMessage")
+
+      div.mb-3
+        div.form-check.form-switch
+          input.form-check-input(type="checkbox", id="isVulnerable" name="isVulnerable")
+          label.form-check-label(for="isVulnerable") Make me vulnerable!
+
+      input.btn.btn-primary(type="submit", value="Submit")
+      br
+  hr.mb-5
+
+  h1.display-5.mb-3 Sensitive Data Exposure Example
+  div.alert.alert-secondary Na idućoj stranici biti će Vam postavljen cookies s trenutnim vremenom. Ako ste označili checkbox, postavljen cookie neće biti potpisan sa tajnom i moći ćete ga mijenjat.
+  div.container-sm.mb-5
+    form(method="post", action="/data-vuln")
+      div.mb-3
+        div.form-check.form-switch
+          input.form-check-input(type="checkbox", id="isVulnerable" name="isVulnerable")
+          label.form-check-label(for="isVulnerable") Make me vulnerable!
+
+      input.btn.btn-primary(type="submit", value="Let's go!")
+

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 There's a secret waiting for you after the countdown expires
+  h3.m-5 Come back in #{days} days #{hours} hours #{minutes} minutes
+
+
+  div.alert.alert-secondary(role="alert")
+    h4.alert-heading Try changing the date in the cookies
+    p Run the following command in the console:
+    code document.cookie = 'expiration=' + encodeURIComponent(new Date().toString()) + '; expires=Thu, 01 Jan 2099 00:00:00 GMT; path=/'
+    p Then reload the page and see what happens.
+    hr
+    p.mb-0 Note that the countdown doesn't update in real time. It only updates when the page is reloaded.
+
+  div.alert.alert-warning #{info}
