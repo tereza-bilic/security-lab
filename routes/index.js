@@ -5,7 +5,6 @@ const escape = require('escape-html');
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.clearCookie('expiration');
   res.render('index', {
@@ -18,17 +17,14 @@ router.post('/data-vuln', function(req, res, next) {
   res.clearCookie('expiration');
 
   if (body.isVulnerable) {
-    // add a day to the cookie
     res.cookie('expiration', new Date(Date.now() + 86400000));
   } else {
-    // encrypt the cookie so no one can change it
     res.cookie('expiration', new Date(Date.now() + 86400000), {
       signed: true,
       httpOnly: true
     });
   }
 
-  // go to countdown route with vuln param
   res.redirect(`/countdown?vuln=${body.isVulnerable ? 1 : 0}`);
 });
 
